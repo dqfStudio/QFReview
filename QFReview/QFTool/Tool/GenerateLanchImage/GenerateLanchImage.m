@@ -19,24 +19,19 @@
     UIImage *image = [UIImage imageWithContentsOfFile:[ConfigModel share].launchImagePath];
     
     //LaunchImage.png
-    UIImage *image1 = [self handleImage:image withSize:CGSizeMake(320, 480)];
-    [self saveImage:image1 path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"LaunchImage.png"]];
+    [self saveImage:image size:CGSizeMake(320, 480) fileName:@"LaunchImage.png"];
     
     //LaunchImage@2x.png
-    UIImage *image2 = [self handleImage:image withSize:CGSizeMake(640, 960)];
-    [self saveImage:image2 path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"LaunchImage@2x.png"]];
+    [self saveImage:image size:CGSizeMake(640, 960) fileName:@"LaunchImage@2x.png"];
     
     //LaunchImage-568h@2x.png
-    UIImage *image3 = [self handleImage:image withSize:CGSizeMake(640, 1136)];
-    [self saveImage:image3 path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"LaunchImage-568h@2x.png"]];
+    [self saveImage:image size:CGSizeMake(640, 1136) fileName:@"LaunchImage-568h@2x.png"];
     
     //LaunchImage-667h@2x.png
-    UIImage *image4 = [self handleImage:image withSize:CGSizeMake(750, 1334)];
-    [self saveImage:image4 path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"LaunchImage-667h@2x.png"]];
+    [self saveImage:image size:CGSizeMake(750, 1334) fileName:@"LaunchImage-667h@2x.png"];
     
     //LaunchImage-736h@3x.png
-    UIImage *image5 = [self handleImage:image withSize:CGSizeMake(1242, 2208)];
-    [self saveImage:image5 path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"LaunchImage-736h@3x.png"]];
+    [self saveImage:image size:CGSizeMake(1242, 2208) fileName:@"LaunchImage-736h@3x.png"];
     
     //LaunchImage-landscape-736h@3x
 //    UIImage *image6 = [self handleImage:image withSize:CGSizeMake(1242, 2208)];
@@ -47,6 +42,11 @@
     //生成Contents.json文件
     NSData *data = [[NSFileManager defaultManager] contentsAtPath:[[NSBundle mainBundle] pathForResource:@"lanchImage-Contents" ofType:@"json"]];
     [data writeToFile:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:@"Contents.json"] atomically:YES];
+}
+
++ (void)saveImage:(UIImage *)image size:(CGSize)size fileName:(NSString *)name {
+    UIImage *img = [self handleImage:image withSize:size];
+    [self saveImage:img path:[IO assembleOrg:[IO assembleOrg:[IO homePath] org2:@"/LaunchImages/"] org2:name]];
 }
 
 + (BOOL)saveImage:(UIImage *)image path:(NSString *)path
