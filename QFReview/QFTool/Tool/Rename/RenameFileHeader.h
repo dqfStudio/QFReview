@@ -9,8 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface RenameFileHeader : NSObject
-
-+ (void)renameCopyright;
-+ (void)renameCreate;
-
++ (void)renameHeader;
 @end

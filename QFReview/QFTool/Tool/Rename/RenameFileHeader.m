@@ -30,51 +30,30 @@
 }
 
 
-+ (void)renameCopyright {
++ (void)renameHeader {
+    
     [RenameFileHeader share].copyrighStr = [ConfigModel share].copyright.append(@"\n");
-    [self reCopyright:[IO pathForResource:nil ofType:nil]];
-}
-
-
-+ (void)renameCreate {
-    [RenameFileHeader share].createStr = [ConfigModel share].create.append(@"\n");
-    [self reCreate:[IO pathForResource:nil ofType:nil]];
-}
-
-+ (void)reCopyright:(NSString *)path {
-
+    [RenameFileHeader share].copyrighStr = [ConfigModel share].create.append(@"\n");
+    
+    NSString *path = [IO pathForResource:nil ofType:nil];
     BOOL isDir = NO;
     [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
     
     if (isDir) {
         [QFFileHelper folderPath1:path filterArr:@[@".h", @".m"] block:^(NSString *path) {
-            [self replaceCopyright:path];
+            [self replaceCC:path];
         }];
     }else {
-        [self replaceCopyright:path];
-    }
-    
-}
-
-+ (void)reCreate:(NSString *)path {
-    
-    BOOL isDir = NO;
-    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
-    
-    if (isDir) {
-        [QFFileHelper folderPath1:path filterArr:@[@".h", @".m"] block:^(NSString *path) {
-            [self replaceCopyright:path];
-        }];
-    }else {
-        [self replaceCopyright:path];
+        [self replaceCC:path];
     }
 
 }
 
-+ (void)replaceCopyright:(NSString *)path {
++ (void)replaceCC:(NSString *)path {
     
     __block NSInteger count = 0;
-    __block NSString *filterLineStr = nil;
+    __block NSString *copyrightStr = nil;
+    __block NSString *createdStr = nil;
     
     [QFFileHelper file:path block:^(NSString *lineStr) {
         count++;
@@ -82,39 +61,23 @@
             return;
         }
         if ([lineStr containsString:@"//  Copyright"]) {
-            filterLineStr = [lineStr mutableCopy];
-            return;
-        }
-    }];
-    
-    if (filterLineStr && [RenameFileHeader share].copyrighStr) {
-        NSString *fileStr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-        fileStr = [fileStr stringByReplacingOccurrencesOfString:filterLineStr withString:[RenameFileHeader share].copyrighStr];
-        [fileStr writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    }
-}
-
-+ (void)replaceCreate:(NSString *)path {
-    
-    __block NSInteger count = 0;
-    __block NSString *filterLineStr = nil;
-    
-    [QFFileHelper file:path block:^(NSString *lineStr) {
-        count++;
-        if (count> 25) {
-            return;
+            copyrightStr = [lineStr mutableCopy];
         }
         if ([lineStr containsString:@"//  Created by"]) {
-            filterLineStr = [lineStr mutableCopy];
-            return;
+            createdStr = [lineStr mutableCopy];
         }
     }];
     
-    if (filterLineStr && [RenameFileHeader share].createStr) {
-        NSString *fileStr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-        fileStr = [fileStr stringByReplacingOccurrencesOfString:filterLineStr withString:[RenameFileHeader share].createStr];
-        [fileStr writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSString *fileStr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    if (copyrightStr && [RenameFileHeader share].copyrighStr) {
+        fileStr = [fileStr stringByReplacingOccurrencesOfString:copyrightStr withString:[RenameFileHeader share].copyrighStr];
     }
+    if (createdStr && [RenameFileHeader share].createStr) {
+        fileStr = [fileStr stringByReplacingOccurrencesOfString:createdStr withString:[RenameFileHeader share].createStr];
+    }
+    
+    [fileStr writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end
