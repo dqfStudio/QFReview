@@ -25,6 +25,9 @@
 		1563ED8A1F1C61E0007C2938 /* RenameFileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563ED7D1F1C61E0007C2938 /* RenameFileHeader.m */; };
 		1563ED8B1F1C61E0007C2938 /* RenameProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563ED7F1F1C61E0007C2938 /* RenameProject.m */; };
 		1570E5331F38451A0022329A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 1570E5321F38451A0022329A /* Review.m */; };
+		158062831F62597000C7E8DA /* QFImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 158062821F62597000C7E8DA /* QFImageTool.m */; };
+		158062881F625BBA00C7E8DA /* NSStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 158062851F625BBA00C7E8DA /* NSStringUtil.m */; };
+		158062891F625BBA00C7E8DA /* QFFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 158062871F625BBA00C7E8DA /* QFFileHelper.m */; };
 		1588BD761F1DA252001222C5 /* StackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1588BD751F1DA252001222C5 /* StackInfo.m */; };
 		15C205E81F41343200058201 /* Png2Jpg.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C205E71F41343200058201 /* Png2Jpg.m */; };
 		15C205EB1F41343F00058201 /* Jpg2Png.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C205EA1F41343F00058201 /* Jpg2Png.m */; };
@@ -63,6 +66,12 @@
 		1563ED7F1F1C61E0007C2938 /* RenameProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenameProject.m; sourceTree = "<group>"; };
 		1570E5311F38451A0022329A /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Review.h; path = QFReview/QFTool/Review/Review.h; sourceTree = SOURCE_ROOT; };
 		1570E5321F38451A0022329A /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Review.m; path = QFReview/QFTool/Review/Review.m; sourceTree = SOURCE_ROOT; };
+		158062811F62597000C7E8DA /* QFImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFImageTool.h; sourceTree = "<group>"; };
+		158062821F62597000C7E8DA /* QFImageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFImageTool.m; sourceTree = "<group>"; };
+		158062841F625BBA00C7E8DA /* NSStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringUtil.h; sourceTree = "<group>"; };
+		158062851F625BBA00C7E8DA /* NSStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtil.m; sourceTree = "<group>"; };
+		158062861F625BBA00C7E8DA /* QFFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFFileHelper.h; sourceTree = "<group>"; };
+		158062871F625BBA00C7E8DA /* QFFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFFileHelper.m; sourceTree = "<group>"; };
 		1588BD741F1DA252001222C5 /* StackInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackInfo.h; sourceTree = "<group>"; };
 		1588BD751F1DA252001222C5 /* StackInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackInfo.m; sourceTree = "<group>"; };
 		15C205E61F41343200058201 /* Png2Jpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Png2Jpg.h; sourceTree = "<group>"; };
@@ -168,6 +177,10 @@
 		1563ED661F1C61E0007C2938 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				158062841F625BBA00C7E8DA /* NSStringUtil.h */,
+				158062851F625BBA00C7E8DA /* NSStringUtil.m */,
+				158062861F625BBA00C7E8DA /* QFFileHelper.h */,
+				158062871F625BBA00C7E8DA /* QFFileHelper.m */,
 				1563ED671F1C61E0007C2938 /* IO */,
 				1563ED6A1F1C61E0007C2938 /* XMLDictionary */,
 			);
@@ -197,6 +210,8 @@
 			children = (
 				1563ED6E1F1C61E0007C2938 /* GenerateIcons.h */,
 				1563ED6F1F1C61E0007C2938 /* GenerateIcons.m */,
+				158062811F62597000C7E8DA /* QFImageTool.h */,
+				158062821F62597000C7E8DA /* QFImageTool.m */,
 				1563ED701F1C61E0007C2938 /* icons-Contents.json */,
 			);
 			path = GenerateIcons;
@@ -330,13 +345,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1563ED191F1C48F9007C2938 /* ViewController.m in Sources */,
+				158062891F625BBA00C7E8DA /* QFFileHelper.m in Sources */,
 				1563ED841F1C61E0007C2938 /* GenerateIcons.m in Sources */,
 				1588BD761F1DA252001222C5 /* StackInfo.m in Sources */,
+				158062831F62597000C7E8DA /* QFImageTool.m in Sources */,
 				15C205E81F41343200058201 /* Png2Jpg.m in Sources */,
 				1563ED161F1C48F9007C2938 /* AppDelegate.m in Sources */,
 				1563ED131F1C48F9007C2938 /* main.m in Sources */,
 				1563ED831F1C61E0007C2938 /* XMLDictionary.m in Sources */,
 				1563ED821F1C61E0007C2938 /* IO.m in Sources */,
+				158062881F625BBA00C7E8DA /* NSStringUtil.m in Sources */,
 				1563ED801F1C61E0007C2938 /* ConfigModel.m in Sources */,
 				1570E5331F38451A0022329A /* Review.m in Sources */,
 				1563ED861F1C61E0007C2938 /* GenerateLanchImage.m in Sources */,

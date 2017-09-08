@@ -6,11 +6,10 @@
 //  Copyright © 2017年 dqfStudio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define KSCREENSHOTPATH @""
+
 @interface GenerateScreenshot : NSObject
-
 + (void)generateScreenshot;
-
 @end
