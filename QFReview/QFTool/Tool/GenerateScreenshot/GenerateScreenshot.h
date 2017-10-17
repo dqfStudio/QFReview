@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define KSCREENSHOTPATH @""
-
 @interface GenerateScreenshot : NSObject
-+ (void)generateScreenshot;
++ (void)folderPath:(NSString *)path;
 @end

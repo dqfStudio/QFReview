@@ -1,5 +1,5 @@
 //
-//  QFImageTool.h
+//  UIImage+QFCut.h
 //  QFReview
 //
 //  Created by dqf on 2017/9/8.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QFImageTool : NSObject
-+ (UIImage *)cutImage:(UIImage *)originalImage withSize:(CGSize)size;
+@interface UIImage (QFCut)
+- (UIImage *)toSize:(CGSize)size;
 @end

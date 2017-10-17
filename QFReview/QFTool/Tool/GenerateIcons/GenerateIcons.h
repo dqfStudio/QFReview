@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define KICONPATH @""
-
 @interface GenerateIcons : NSObject
-+ (void)generateIcon;
++ (void)filePath:(NSString *)path;
 @end

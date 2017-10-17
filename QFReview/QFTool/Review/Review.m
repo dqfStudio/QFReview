@@ -20,14 +20,14 @@
 + (void)exe {
     [RenameProject renameProject];
     
-    [RenameFileHeader renameCreate];
-    [RenameFileHeader renameCopyright];
+//    [RenameFileHeader renameCreate];
+//    [RenameFileHeader renameCopyright];
     
     [QFReleaseReview review];
     
-    [GenerateIcons generateIcon];
-    [GenerateLanchImage generateLanchImage];
-    [GenerateScreenshot generateScreenshot];
+//    [GenerateIcons generateIcon];
+//    [GenerateLanchImage generateLanchImage];
+//    [GenerateScreenshot generateScreenshot];
 }
 
 @end

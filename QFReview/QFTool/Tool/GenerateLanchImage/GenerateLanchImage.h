@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define KLANCHIMAGEPATH @""
-
 @interface GenerateLanchImage : NSObject
-+ (void)generateLanchImage;
++ (void)filePath:(NSString *)path;
 @end

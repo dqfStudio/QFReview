@@ -1,16 +1,18 @@
 //
-//  QFImageTool.m
+//  UIImage+QFCut.m
 //  QFReview
 //
 //  Created by dqf on 2017/9/8.
 //  Copyright © 2017年 dqfStudio. All rights reserved.
 //
 
-#import "QFImageTool.h"
+#import "UIImage+QFCut.h"
 
-@implementation QFImageTool
+@implementation UIImage (QFCut)
 
-+ (UIImage *)cutImage:(UIImage *)originalImage withSize:(CGSize)size {
+- (UIImage *)toSize:(CGSize)size {
+    
+    UIImage *originalImage = self;
     CGSize originalsize = [originalImage size];
     
     //原图长宽均小于标准长宽的，不作处理返回原图

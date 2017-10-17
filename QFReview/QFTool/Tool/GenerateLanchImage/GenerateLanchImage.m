@@ -7,16 +7,14 @@
 //
 
 #import "GenerateLanchImage.h"
-#import "QFImageTool.h"
+#import "UIImage+QFCut.h"
 #import "NSStringUtil.h"
 #import "QFFileHelper.h"
 
 @implementation GenerateLanchImage
 
-+ (void)generateLanchImage {
++ (void)filePath:(NSString *)path {
     
-    if (KLANCHIMAGEPATH.length == 0) return;
-
     NSArray *frameArr = @[@"{320, 480}",
                           @"{640, 960}",
                           @"{640, 1136}",
@@ -32,7 +30,7 @@
     for (int i=0; i<frameArr.count; i++) {
         NSString *frameStr = frameArr[i];
         NSString *imgStr = imgArr[i];
-        [self saveWithSize:CGSizeFromString(frameStr) fileName:imgStr];
+        [self saveWithSize:CGSizeFromString(frameStr) fileName:imgStr path:path];
     }
 
     
@@ -44,18 +42,16 @@
     
     //生成Contents.json文件
     NSData *data = [[NSFileManager defaultManager] contentsAtPath:[[NSBundle mainBundle] pathForResource:@"lanchImage-Contents" ofType:@"json"]];
-    [data writeToFile:[QFFileHelper timePath].append(@"LaunchImages/Contents.json") atomically:YES];
+    NSString *filePath = [QFFileHelper timePath].append(@"LaunchImages/Contents.json");
+    [data writeToFile:filePath atomically:YES];
 }
 
-+ (void)saveWithSize:(CGSize)size fileName:(NSString *)name {
-    UIImage *image = [UIImage imageWithContentsOfFile:KLANCHIMAGEPATH];
-    UIImage *img = [QFImageTool cutImage:image withSize:size];
-    [self saveImage:img path:[QFFileHelper timePath].append(@"LaunchImages/").append(name)];
-}
-
-+ (BOOL)saveImage:(UIImage *)image path:(NSString *)path {
-    NSData *imageData = UIImagePNGRepresentation(image);
-    return [imageData writeToFile:path atomically:YES];
++ (void)saveWithSize:(CGSize)size fileName:(NSString *)name path:(NSString *)path {
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    UIImage *img = [image toSize:size];
+    NSString *filePath = [QFFileHelper timePath].append(@"LaunchImages/").append(name);
+    NSData *imageData = UIImagePNGRepresentation(img);
+    [imageData writeToFile:filePath atomically:YES];
 }
 
 @end
